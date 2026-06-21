@@ -166,7 +166,7 @@ _sage_accept_widget() {
         # Record accept asynchronously with cached signal contributions
         # Skip recording if contributions are all zero (e.g. from a cycled suggestion)
         if [[ "$ZSH_SAGE_COLLECT_ACCEPTS" == "true" ]] \
-           && (( _SAGE_CURRENT_FREQ_CONTRIB + _SAGE_CURRENT_REC_CONTRIB + _SAGE_CURRENT_DIR_CONTRIB + _SAGE_CURRENT_SEQ_CONTRIB + _SAGE_CURRENT_SUCC_CONTRIB != 0 )); then
+           && [[ "$_SAGE_CURRENT_FREQ_CONTRIB" != "0" || "$_SAGE_CURRENT_REC_CONTRIB" != "0" || "$_SAGE_CURRENT_DIR_CONTRIB" != "0" || "$_SAGE_CURRENT_SEQ_CONTRIB" != "0" || "$_SAGE_CURRENT_SUCC_CONTRIB" != "0" ]]; then
             {
                 _sage_db_record_accept \
                     "$_SAGE_CURRENT_FREQ_CONTRIB" \
