@@ -209,7 +209,7 @@ _sage_accept_word_widget() {
         fi
         zle -R
     else
-        _sage_invoke_wrapped_widget forward-word
+        _sage_invoke_wrapped_widget $WIDGET
     fi
 }
 
@@ -361,6 +361,7 @@ _sage_invoke_wrapped_widget() {
 _sage_widget_init() {
     _sage_register_widget_wrapper _sage_accept_widget forward-char
     _sage_register_widget_wrapper _sage_accept_word_widget forward-word
+    _sage_register_widget_wrapper _sage_accept_word_widget z4h-forward-word  # zsh4humans compat
     zle -N sage-dismiss _sage_dismiss_widget
     _sage_register_widget_wrapper _sage_accept_line_widget accept-line
     _sage_register_widget_wrapper _sage_suggest_widget self-insert
